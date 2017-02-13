@@ -44,7 +44,7 @@ class EmployeeSerializer(serializers.ModelSerializer):
 class AccountStatementSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Employee
+        model = AccountStatement
         fields = ('id', 'create_date', 'name', 'total')
 
 class CompanySerializer(serializers.ModelSerializer):
@@ -70,7 +70,7 @@ class OrderLineSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = OrderLine
-        fields = ('id', 'create_date', 'unit_price', 'qty', 'discount', 'product_id', 'order_id')
+        fields = ('id', 'create_date', 'price_unit', 'qty', 'discount', 'product_id', 'order_id')
 
 
 

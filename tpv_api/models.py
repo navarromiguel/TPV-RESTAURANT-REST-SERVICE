@@ -85,7 +85,7 @@ class Order(BaseModel):
     employee_id = models.ForeignKey(Employee, db_column='employee_id')
     table_id = models.ForeignKey(Table, db_column='table_id', blank=True)
     pos_config_id = models.ForeignKey(PosConfig, on_delete=models.PROTECT, db_column='pos_config_id')
-    account_statement_id = models.ForeignKey(AccountStatement, on_delete=models.PROTECT, db_column='account_statement_id')
+    account_statement_id = models.ForeignKey(AccountStatement, on_delete=models.PROTECT, db_column='account_statement_id', blank=True, null=True)
 
     class Meta:
         db_table = 'tpv_order'
