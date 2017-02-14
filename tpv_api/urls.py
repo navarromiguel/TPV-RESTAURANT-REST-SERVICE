@@ -90,6 +90,10 @@ order_statement_list = OrderViewSet.as_view({
     'post': 'create'
 })
 
+new_orders = OrderViewSet.as_view({
+    'get': 'news'
+})
+
 order_statement_detail = OrderViewSet.as_view({
     'get': 'retrieve',
     'put': 'update',
@@ -131,6 +135,7 @@ urlpatterns = format_suffix_patterns([
     url(r'^pos-configs/(?P<pk>[0-9]+)/$', pos_config_detail, name='account_statement-detail')
     url(r'^orders/$', order_list, name='order-list'),
     url(r'^orders/(?P<pk>[0-9]+)/$', order_details, name='order-detail')
+    url(r'^orders/news/)/$', new_orders, name='new-orders')
     url(r'^orderlines/$', orderline_list, name='orderline-list'),
     url(r'^orderlines/(?P<pk>[0-9]+)/$', orderline_details, name='orderline-detail')
 

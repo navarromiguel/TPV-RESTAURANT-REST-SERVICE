@@ -58,6 +58,32 @@ class OrderViewSet(viewsets.ModelViewSet):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
 
+    @list_route()
+    def news(self, request):
+        res=[]
+        orders = Order.objects.all().filter(state="new")
+        for order in orders:
+            obj = OrderSerializer(order).data
+            table = TableSerializer(Table.objects.all().filter(id=order.table_id.id)[0]).data
+            lines = OrderLine.objects.all().filter(order_id=order.id)
+            new_lines = []
+            for line in lines:
+                new_line = OrderLineSerializer(line).data
+                new_line["product"] =  ProductSerializer(Product.objects.all().filter(id=line.product_id.id)[0]).data
+                new_lines.append(new_line)
+
+            obj.update({
+                    "table": table,
+                    "floor": FloorSerializer(Floor.objects.all().filter(id=table['floor_id'])[0]).data,
+                    "lines": new_lines
+                })
+            res.append(obj)
+
+
+       # serializer = OrderSerializer(orders, many=True)
+        return Response(res, status=status.HTTP_200_OK)
+
+
 class OrderLineViewSet(viewsets.ModelViewSet):
     queryset = OrderLine.objects.all()
     serializer_class = OrderLineSerializer

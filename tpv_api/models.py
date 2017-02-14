@@ -97,6 +97,15 @@ class OrderLine(BaseModel):
     product_id = models.ForeignKey(Product, db_column='product_id')
     order_id = models.ForeignKey(Order, db_column='order_id')
     
+    """
+    def delete(self):
+        print "delete \n\n\n"
+
+        self.order_id = None;
+        self.update()
+            
+        super(OrderLine, self).delete()
+    """
     class Meta:
         db_table = 'tpv_order_line'
 

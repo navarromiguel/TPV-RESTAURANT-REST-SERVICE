@@ -16,6 +16,7 @@ router.register(r'account-statements', views.AccountStatementViewSet)
 router.register(r'companies', views.CompanyViewSet)
 router.register(r'pos-configs', views.PosConfigViewSet)
 router.register(r'orders', views.OrderViewSet)
+router.register(r'orders/news/', views.OrderViewSet)
 router.register(r'orderlines', views.OrderLineViewSet)
 
 # The API URLs are now determined automatically by the router.
