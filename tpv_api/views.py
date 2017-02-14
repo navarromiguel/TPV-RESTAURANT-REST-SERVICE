@@ -4,8 +4,8 @@ from rest_framework import generics
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.response import Response
-from rest_framework import viewsets
-from rest_framework.decorators import detail_route
+from rest_framework import viewsets, status
+from rest_framework.decorators import detail_route, list_route
 
 class ProductCategoryViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = ProductCategory.objects.all()
@@ -26,6 +26,17 @@ class TableViewSet(viewsets.ReadOnlyModelViewSet):
 class UserViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+    @list_route(methods=["POST"])
+    def login(self, request):
+        if not request.data["alias"] or not request.data["password"]:
+            return Response({}, status=status.HTTP_400_BAD_REQUEST)
+        logged = User.objects.all().filter(alias=request.data["alias"],password=request.data["password"])
+
+        if len(logged):
+            return Response({}, status=status.HTTP_200_OK)
+
+        return Response({}, status=status.HTTP_400_BAD_REQUEST)
 
 class EmployeeViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Employee.objects.all()
