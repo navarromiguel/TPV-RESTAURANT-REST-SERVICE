@@ -94,7 +94,7 @@ class OrderLine(BaseModel):
     price_unit = models.FloatField(db_column='price_unit')
     qty = models.IntegerField(db_column='qty')
     discount = models.FloatField(db_column='discount')
-    product_id = models.ForeignKey(Product, db_column='product_id')
+    product_id = models.ForeignKey(Product, db_column='product_id', blank=True, null=True, on_delete=models.SET_NULL)
     order_id = models.ForeignKey(Order, db_column='order_id')
     
     """
