@@ -25,7 +25,7 @@ SECRET_KEY = '%2u&#dh^kln376kmu-21mm%b8m*u6w^!tmz+8j^x-=8nm(96dx'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.0.21']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -78,10 +78,10 @@ WSGI_APPLICATION = 'tpv_REST.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'tpv_restaurante',
-        'USER': 'root',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',  
+        'NAME': 'tpv_restaurant',
+        'USER': 'admintpv',
+        'PASSWORD': 'admintpv',
+        'HOST': 'www.db4free.net',  
         'PORT': '3306',
     }
 }

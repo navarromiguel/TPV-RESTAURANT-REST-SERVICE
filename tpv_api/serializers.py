@@ -38,7 +38,7 @@ class EmployeeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Employee
-        fields = ('id', 'create_date', 'pin', 'user_id')
+        fields = ('id', 'create_date', 'pin', 'id_user')
 
 
 class AccountStatementSerializer(serializers.ModelSerializer):

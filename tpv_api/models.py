@@ -52,7 +52,7 @@ class User(BaseModel):
 
 class Employee(BaseModel):
     pin = models.IntegerField(db_column='pin')
-    user_id = models.ForeignKey(User, on_delete=models.PROTECT, db_column='user_id')
+    id_user = models.ForeignKey(User, on_delete=models.PROTECT, db_column='id_user')
 
     class Meta:
         db_table = 'tpv_employee'
